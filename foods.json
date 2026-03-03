@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "foods": [
+    {
+      "id": "spaghetti-carbonara",
+      "name": "Špagety carbonara",
+      "time_min": 25,
+      "difficulty": 2,
+      "tags": ["těstoviny", "rychlé", "večeře"],
+      "methods": ["pánev", "hrnec"],
+      "cuisine": "italská",
+      "ingredients": ["špagety", "vejce", "slanina", "parmazán"],
+      "weight": 1
+    },
+    {
+      "id": "chicken-rice",
+      "name": "Kuře na pánvi s rýží",
+      "time_min": 35,
+      "difficulty": 2,
+      "tags": ["maso", "oběd", "večeře"],
+      "methods": ["pánev", "hrnec"],
+      "cuisine": "běžná",
+      "ingredients": ["kuřecí", "rýže", "zelenina"],
+      "weight": 1
+    }
+  ]
+}

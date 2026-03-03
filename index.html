@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Co vařit?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Co vařit?</h1>
+      <p class="muted">Losování jídel z databáze + filtry. Data jídel jsou v <code>foods.json</code>, tvoje preference se ukládají lokálně.</p>
+    </header>
+
+    <section class="card">
+      <h2>Filtry</h2>
+
+      <div class="grid">
+        <label>
+          Max. čas (min)
+          <input id="maxTime" type="number" min="5" step="5" value="45" />
+        </label>
+
+        <label>
+          Kuchyně
+          <select id="cuisine">
+            <option value="">(libovolně)</option>
+          </select>
+        </label>
+
+        <label>
+          Metoda
+          <select id="method">
+            <option value="">(libovolně)</option>
+          </select>
+        </label>
+
+        <label>
+          Tag (např. rychlé / vegetarián)
+          <select id="tag">
+            <option value="">(libovolně)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row">
+        <button id="btnPick" class="primary">Vylosuj jídlo</button>
+        <button id="btnAgain">Znovu</button>
+        <button id="btnReset" class="danger">Reset filtrů</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Výsledek</h2>
+      <div id="result" class="result muted">Klikni na „Vylosuj jídlo“.</div>
+
+      <div class="row">
+        <button id="btnFav" disabled>⭐ Oblíbené</button>
+        <button id="btnCooked" disabled>✅ Uvařeno dnes</button>
+        <button id="btnSkip" disabled>🙅 Nechci 7 dní</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Moje data (lokálně)</h2>
+      <p class="muted">Oblíbené, historie a blokace se ukládají do prohlížeče. Můžeš exportovat a přenést mezi zařízeními.</p>
+
+      <div class="row">
+        <button id="btnExport">Export JSON</button>
+        <label class="file">
+          Import JSON
+          <input id="importFile" type="file" accept="application/json" />
+        </label>
+        <button id="btnClearLocal" class="danger">Smazat lokální data</button>
+      </div>
+
+      <details>
+        <summary>Debug: stav</summary>
+        <pre id="debug"></pre>
+      </details>
+    </section>
+
+    <footer class="muted">
+      Tip: na iOS otevři stránku v Safari → Sdílet → „Přidat na plochu“.
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
