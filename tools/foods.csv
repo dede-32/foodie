@@ -1,0 +1,101 @@
+name,meal_type,time_min,methods,ingredients,tags,weight
+Míchaná vajíčka,snídaně,0-30,,vejce|slanina,rychlé ,1
+Šneci z listového těsta,večeře|svačina,0-30,remoska|trouba,listové těsto|kečup|šunka|sýr,,1
+Těstovinový salát,oběd|večeře,30-60,,testoviny|jogurt|majoneza|syr|kukuřice|rajce|okurka|paprika|krabí tyčinky,studené,1
+Pečená omáčka z papriky a rajčat,oběd|večeře,0-30,remoska|trouba|mixér,,,1
+Špenátové těstoviny,oběd|večeře,0-30,mixér,,,1
+Bramboráky,oběd|večeře,30-60,,,,1
+Krémová česnečka,oběd|večeře,0-30,mixér,,,1
+České rizoto,oběd|večeře,0-30,,,,1
+Mrkvová pomazánka,večeře,0-30,,,,1
+Plátek s bramborama a zeleninou,oběd|večeře,30-60,remoska|trouba,,,1
+Tousty,svačina|večeře,0-30,,,,1
+Guacamole,večeře,0-30,,,,1
+Řízky,oběd,30-60,,,,1
+Salát s melounem a balkánem,večeře,0-30,,,,1
+Asie podle thermomixu,oběd|večeře,30-60,mixér,,,1
+Sushi,oběd|večeře,60+,balítko,,,1
+Brokolicová polévka,oběd|večeře,0-30,mixér,,,1
+Maso v mrkvi,oběd|večeře,60+,,,,1
+Ceasar salát,oběd|večeře,0-30,,,,1
+Hrášková polévka,oběd|večeře,0-30,mixér,,,1
+Quesadilla,oběd|večeře,0-30,gril,,,1
+Tortily,oběd|večeře,0-30,gril,,,1
+Nudle s masem a zeleninou,oběd|večeře,30-60,,,,1
+Panenka s jablkama,oběd|večeře,30-60,,,,1
+Polévka z červené čočky,oběd|večeře,0-30,mixér,,,1
+Bagetky s masem a zeleninou,oběd|svačina,0-30,,,,1
+Chilli con carne,oběd|večeře,0-30,,,,1
+Omáčka z medvědího česneku,oběd|večeře,0-30,,,,1
+Květáková polévka,oběd|večeře,0-30,mixér,,,1
+Pomazánka z medvědího česneku,večeře,0-30,,,,1
+Rizoto s hráškovým pyré,oběd|večeře,30-60,mixér,,,1
+Česnečka,oběd|večeře,0-30,,,,1
+Lívanečky,oběd|večeře,30-60,,,,1
+Penne ala vodka,oběd|večeře,0-30,,,,1
+Smažák,oběd|večeře,0-30,,,,1
+"Losos v teryiaki omáčce, fazolky, rýže",oběd|večeře,0-30,,,,1
+Boloňské špagety,oběd|večeře,0-30,,,,1
+Vývar,oběd|večeře,60+,,,,1
+Šopák,večeře|svačina,0-30,,,,1
+Smetanová omáčka,oběd|večeře,0-30,,,,1
+Svíčková,oběd|večeře,60+,mixér,,,1
+Krupicová kaše,večeře,0-30,,,,1
+Červené kari s květákem,oběd|večeře,30-60,,,,1
+Caprese bagetky,oběd|svačina,0-30,,,,1
+Letní závitky s arašídovou omáčkou,večeře,30-60,,,,1
+Langoše,oběd|večeře,30-60,,,,1
+Zapečené hranolky se slaninou a čedarem,oběd|večeře,30-60,remoska|trouba,,,1
+Zapečené těstoviny,oběd|večeře,30-60,remoska|trouba,,,1
+Muffiny,snídaně|svačina,0-30,remoska|trouba,,,1
+Croissanty z listového těsta,,,,,,
+Halušky,,,,,,
+Párky v rohlíku,,,,,,
+Pizza,,,,,,
+Panenka s parmazánovýma bramborama a omáčkou z pečeného česneku,,,,,,
+Noky s brokolicovým pestem,,,,,,
+Kakaový bananabread,,,,,,
+Jablečný koláč,,,,,,
+Poké bowl,,,,,,
+Chia pudink,,,,,,
+Kuře na paprice,,,,,,
+Sekaná,,,,,,
+Ovesná kaše,,,,,,
+Kynuté buchty,,,,,,
+Mechový dort,,,,,,
+Rizoto s medvědím česnekem,,,,,,
+Katův šleh,,,,,,
+Mazanec,,,,,,
+Quiche,,,,,,
+Šalamounka,,,,,,
+Losos s bramborama a zeleninou,,,,,,
+Nachosky s dipem,,,,,,
+Párky v těstíčku,,,,,,
+Buřtguláš,,,,,,
+Zapečené brambory,,,,,,
+Pinsa,,,,,,
+Šunková pěna,,,,,,
+Trhané maso,,,,,,
+Bábovka,,,,,,
+Štrůdl,,,,,,
+Rajčatový kuskus,,,,,,
+Kuskus s masem a zeleninou,,,,,,
+Perník,,,,,,
+Smetanová rýže,,,,,,
+Cheesecake,,,,,,
+Kebab,,,,,,
+Kuřecí tikka kari,,,,,,
+Burgery,,,,,,
+Tacos,,,,,,
+Pitta chléb,,,,,,
+Zapečené houstičky  se šunkou a sýrem,,,,,,
+Kary,,,,,,
+Hořčicovo smetanová omáčka,,,,,,
+Rajská omáčka,,,,,,
+Červené kari,,,,,,
+Zdendova kotleta,,,,,,
+Zdendovy brambory,,,,,,
+Ryba na másle,,,,,,
+Hrachovka,,,,,,
+Club sandwich,,,,,,
+Bublanina,,,,,,
