@@ -1,7 +1,7 @@
 let db = null;
 let lastPick = null;
 
-const LS_KEY = "meal_picker_state_v2";
+const LS_KEY = "meal_picker_state_v3";
 
 const el = (id) => document.getElementById(id);
 
@@ -11,6 +11,23 @@ function uniq(arr) {
 
 function asArray(value) {
   return Array.isArray(value) ? value : [];
+}
+
+function splitPipeList(value) {
+  if (!value) return [];
+  return String(value)
+    .split("|")
+    .map((x) => x.trim())
+    .filter(Boolean);
+}
+
+function slugify(text) {
+  return String(text)
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function todayISO() {
@@ -27,6 +44,15 @@ function addDaysISO(isoDate, days) {
   return d.toISOString().slice(0, 10);
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 function loadState() {
   try {
     const raw = localStorage.getItem(LS_KEY);
@@ -34,7 +60,8 @@ function loadState() {
       return {
         favorites: [],
         cooked: {},
-        blockedUntil: {}
+        blockedUntil: {},
+        customFoods: []
       };
     }
 
@@ -43,13 +70,15 @@ function loadState() {
     return {
       favorites: Array.isArray(parsed.favorites) ? parsed.favorites : [],
       cooked: parsed.cooked && typeof parsed.cooked === "object" ? parsed.cooked : {},
-      blockedUntil: parsed.blockedUntil && typeof parsed.blockedUntil === "object" ? parsed.blockedUntil : {}
+      blockedUntil: parsed.blockedUntil && typeof parsed.blockedUntil === "object" ? parsed.blockedUntil : {},
+      customFoods: Array.isArray(parsed.customFoods) ? parsed.customFoods : []
     };
   } catch {
     return {
       favorites: [],
       cooked: {},
-      blockedUntil: {}
+      blockedUntil: {},
+      customFoods: []
     };
   }
 }
@@ -59,6 +88,11 @@ let state = loadState();
 function saveState() {
   localStorage.setItem(LS_KEY, JSON.stringify(state));
   refreshDebug();
+  renderCustomFoods();
+}
+
+function getAllFoods() {
+  return [...(db?.foods ?? []), ...state.customFoods];
 }
 
 function isFavorite(foodId) {
@@ -80,7 +114,6 @@ function cookedRecentlyPenalty(foodId) {
   if (!last) return 1.0;
 
   const today = todayISO();
-
   if (last === today) return 0.05;
   if (today <= addDaysISO(last, 2)) return 0.25;
   if (today <= addDaysISO(last, 5)) return 0.6;
@@ -99,7 +132,6 @@ function weightedPick(items) {
   if (sum <= 0) return null;
 
   let r = Math.random() * sum;
-
   for (let i = 0; i < items.length; i++) {
     r -= weights[i];
     if (r <= 0) return items[i];
@@ -129,50 +161,48 @@ async function loadDB() {
   db = data;
 }
 
+function renderCheckboxGroup(containerId, values) {
+  const container = el(containerId);
+  container.innerHTML = values.map((v) => `
+    <label class="check-item">
+      <input type="checkbox" value="${escapeHtml(v)}">
+      ${escapeHtml(v)}
+    </label>
+  `).join("");
+}
+
 function fillFilterOptions() {
-  const foods = db?.foods ?? [];
+  const foods = getAllFoods();
 
-  const mealTypes = uniq(
-    foods.flatMap((x) => asArray(x.meal_type)).filter(Boolean)
-  );
+  const mealTypes = uniq(foods.flatMap((x) => asArray(x.meal_type)).filter(Boolean));
+  const tags = uniq(foods.flatMap((x) => asArray(x.tags)).filter(Boolean));
+  const methods = uniq(foods.flatMap((x) => asArray(x.methods)).filter(Boolean));
+  const ingredients = uniq(foods.flatMap((x) => asArray(x.ingredients)).filter(Boolean));
 
-  const tags = uniq(
-    foods.flatMap((x) => asArray(x.tags)).filter(Boolean)
-  );
+  renderCheckboxGroup("mealTypeGroup", mealTypes);
+  renderCheckboxGroup("tagGroup", tags);
+  renderCheckboxGroup("methodGroup", methods);
+  renderCheckboxGroup("ingredientGroup", ingredients);
+}
 
-  const methods = uniq(
-    foods.flatMap((x) => asArray(x.methods)).filter(Boolean)
-  );
-
-  const ingredients = uniq(
-    foods.flatMap((x) => asArray(x.ingredients)).filter(Boolean)
-  );
-
-  el("mealType").innerHTML =
-    `<option value="">(libovolně)</option>` +
-    mealTypes.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
-
-  el("tag").innerHTML =
-    `<option value="">(libovolně)</option>` +
-    tags.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
-
-  el("method").innerHTML =
-    `<option value="">(libovolně)</option>` +
-    methods.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
-
-  el("ingredient").innerHTML =
-    `<option value="">(libovolně)</option>` +
-    ingredients.map((x) => `<option value="${escapeHtml(x)}">${escapeHtml(x)}</option>`).join("");
+function getCheckedValues(containerId) {
+  return Array.from(el(containerId).querySelectorAll('input[type="checkbox"]:checked'))
+    .map((x) => x.value);
 }
 
 function readFilters() {
   return {
-    mealType: el("mealType")?.value ?? "",
-    timeCategory: el("timeCategory")?.value ?? "",
-    tag: el("tag")?.value ?? "",
-    method: el("method")?.value ?? "",
-    ingredient: el("ingredient")?.value ?? ""
+    mealTypes: getCheckedValues("mealTypeGroup"),
+    timeCategories: getCheckedValues("timeCategoryGroup"),
+    tags: getCheckedValues("tagGroup"),
+    methods: getCheckedValues("methodGroup"),
+    ingredients: getCheckedValues("ingredientGroup")
   };
+}
+
+function matchesAny(selected, values) {
+  if (!selected.length) return true;
+  return selected.some((item) => values.includes(item));
 }
 
 function applyFilters(foods, filters) {
@@ -181,30 +211,14 @@ function applyFilters(foods, filters) {
     const tags = asArray(food.tags);
     const methods = asArray(food.methods);
     const ingredients = asArray(food.ingredients);
+    const timeCategory = food.time_category ? [food.time_category] : [];
 
-    if (filters.mealType && !mealType.includes(filters.mealType)) {
-      return false;
-    }
-
-    if (filters.timeCategory && food.time_category !== filters.timeCategory) {
-      return false;
-    }
-
-    if (filters.tag && !tags.includes(filters.tag)) {
-      return false;
-    }
-
-    if (filters.method && !methods.includes(filters.method)) {
-      return false;
-    }
-
-    if (filters.ingredient && !ingredients.includes(filters.ingredient)) {
-      return false;
-    }
-
-    if (isBlocked(food.id)) {
-      return false;
-    }
+    if (!matchesAny(filters.mealTypes, mealType)) return false;
+    if (!matchesAny(filters.timeCategories, timeCategory)) return false;
+    if (!matchesAny(filters.tags, tags)) return false;
+    if (!matchesAny(filters.methods, methods)) return false;
+    if (!matchesAny(filters.ingredients, ingredients)) return false;
+    if (isBlocked(food.id)) return false;
 
     return true;
   });
@@ -220,15 +234,6 @@ function setNoMatchMessage() {
   const box = el("result");
   box.classList.add("muted");
   box.textContent = "Nic nevyhovuje filtrům.";
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
 }
 
 function setResult(food, note = "") {
@@ -299,7 +304,7 @@ function updateActionButtons() {
 }
 
 function pickFood() {
-  const foods = db?.foods ?? [];
+  const foods = getAllFoods();
   const filters = readFilters();
   const candidates = applyFilters(foods, filters);
 
@@ -316,11 +321,10 @@ function pickFood() {
 }
 
 function resetFilters() {
-  el("mealType").value = "";
-  el("timeCategory").value = "";
-  el("tag").value = "";
-  el("method").value = "";
-  el("ingredient").value = "";
+  document.querySelectorAll('.check-group input[type="checkbox"]').forEach((cb) => {
+    cb.checked = false;
+  });
+
   lastPick = null;
   setInitialMessage();
   updateActionButtons();
@@ -358,6 +362,98 @@ function blockFor7Days() {
   setResult(lastPick, `Skryto do ${state.blockedUntil[lastPick.id]}.`);
 }
 
+function addCustomFood() {
+  const name = el("customName").value.trim();
+  if (!name) {
+    alert("Vyplň název jídla.");
+    return;
+  }
+
+  const baseId = slugify(name);
+  let uniqueId = `custom-${baseId}`;
+  let counter = 2;
+
+  const allIds = new Set(getAllFoods().map((x) => x.id));
+  while (allIds.has(uniqueId)) {
+    uniqueId = `custom-${baseId}-${counter}`;
+    counter++;
+  }
+
+  const customFood = {
+    id: uniqueId,
+    name,
+    meal_type: splitPipeList(el("customMealType").value),
+    time_category: el("customTimeCategory").value,
+    methods: splitPipeList(el("customMethods").value),
+    ingredients: splitPipeList(el("customIngredients").value),
+    tags: splitPipeList(el("customTags").value),
+    weight: Number(el("customWeight").value) || 1,
+    isCustom: true
+  };
+
+  state.customFoods.push(customFood);
+  saveState();
+  fillFilterOptions();
+
+  el("customName").value = "";
+  el("customMealType").value = "";
+  el("customTimeCategory").value = "0-30";
+  el("customMethods").value = "";
+  el("customIngredients").value = "";
+  el("customTags").value = "";
+  el("customWeight").value = "1";
+
+  alert("Vlastní jídlo bylo přidáno.");
+}
+
+function deleteCustomFood(foodId) {
+  state.customFoods = state.customFoods.filter((x) => x.id !== foodId);
+  state.favorites = state.favorites.filter((id) => id !== foodId);
+  delete state.cooked[foodId];
+  delete state.blockedUntil[foodId];
+
+  if (lastPick?.id === foodId) {
+    lastPick = null;
+    setInitialMessage();
+  }
+
+  saveState();
+  fillFilterOptions();
+}
+
+function renderCustomFoods() {
+  const box = el("customFoodsList");
+  const foods = state.customFoods;
+
+  if (!foods.length) {
+    box.className = "custom-list muted";
+    box.textContent = "Zatím žádná vlastní jídla.";
+    return;
+  }
+
+  box.className = "custom-list";
+  box.innerHTML = foods.map((food) => `
+    <div class="custom-item">
+      <div>
+        <div class="custom-item-title">${escapeHtml(food.name)}</div>
+        <div class="muted">
+          ${escapeHtml(asArray(food.meal_type).join(", ") || "-")} •
+          ${escapeHtml(food.time_category || "-")} •
+          ${escapeHtml(asArray(food.methods).join(", ") || "-")}
+        </div>
+      </div>
+      <button class="danger" data-delete-custom="${escapeHtml(food.id)}">Smazat</button>
+    </div>
+  `).join("");
+
+  box.querySelectorAll("[data-delete-custom]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-delete-custom");
+      deleteCustomFood(id);
+    });
+  });
+}
+
 function exportState() {
   const payload = {
     exported_at: new Date().toISOString(),
@@ -389,10 +485,13 @@ function importState(file) {
       state = {
         favorites: Array.isArray(payload.state.favorites) ? payload.state.favorites : [],
         cooked: payload.state.cooked && typeof payload.state.cooked === "object" ? payload.state.cooked : {},
-        blockedUntil: payload.state.blockedUntil && typeof payload.state.blockedUntil === "object" ? payload.state.blockedUntil : {}
+        blockedUntil: payload.state.blockedUntil && typeof payload.state.blockedUntil === "object" ? payload.state.blockedUntil : {},
+        customFoods: Array.isArray(payload.state.customFoods) ? payload.state.customFoods : []
       };
 
       saveState();
+      fillFilterOptions();
+
       if (lastPick) {
         setResult(lastPick, "Import proběhl úspěšně.");
       } else {
@@ -414,7 +513,9 @@ function clearLocalData() {
   lastPick = null;
   setInitialMessage();
   updateActionButtons();
+  fillFilterOptions();
   refreshDebug();
+  renderCustomFoods();
 }
 
 function refreshDebug() {
@@ -437,14 +538,14 @@ function wireUI() {
   el("btnCooked").addEventListener("click", markCookedToday);
   el("btnSkip").addEventListener("click", blockFor7Days);
 
+  el("btnAddCustom").addEventListener("click", addCustomFood);
+
   el("btnExport").addEventListener("click", exportState);
   el("btnClearLocal").addEventListener("click", clearLocalData);
 
   el("importFile").addEventListener("change", (e) => {
     const file = e.target.files?.[0];
-    if (file) {
-      importState(file);
-    }
+    if (file) importState(file);
     e.target.value = "";
   });
 }
@@ -456,6 +557,7 @@ async function main() {
     updateActionButtons();
     await loadDB();
     fillFilterOptions();
+    renderCustomFoods();
     refreshDebug();
   } catch (err) {
     console.error(err);
@@ -464,7 +566,5 @@ async function main() {
     box.textContent = "Chyba: " + (err?.message ?? err);
   }
 }
-
-main();
 
 main();
