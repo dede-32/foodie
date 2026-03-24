@@ -10,7 +10,7 @@
   <div class="wrap">
     <header>
       <h1>Co vařit?</h1>
-      <p class="muted">Jednoduchý losovač jídel z databáze.</p>
+      <p class="muted">Chytrý losovač jídel z databáze.</p>
     </header>
 
     <section class="card">
@@ -40,6 +40,20 @@
             <option value="">(libovolně)</option>
           </select>
         </label>
+
+        <label>
+          Způsob přípravy
+          <select id="method">
+            <option value="">(libovolně)</option>
+          </select>
+        </label>
+
+        <label>
+          Hlavní surovina
+          <select id="ingredient">
+            <option value="">(libovolně)</option>
+          </select>
+        </label>
       </div>
 
       <div class="row">
@@ -52,6 +66,33 @@
     <section class="card">
       <h2>Výsledek</h2>
       <div id="result" class="result muted">Klikni na „Vylosuj jídlo“.</div>
+
+      <div class="row">
+        <button id="btnFav" disabled>⭐ Oblíbené</button>
+        <button id="btnCooked" disabled>✅ Uvařeno dnes</button>
+        <button id="btnSkip" disabled>🙅 Nechci 7 dní</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Moje data</h2>
+      <p class="muted">
+        Oblíbené, historie a skrytá jídla se ukládají lokálně do prohlížeče.
+      </p>
+
+      <div class="row">
+        <button id="btnExport">Export JSON</button>
+        <label class="file">
+          Import JSON
+          <input id="importFile" type="file" accept="application/json" />
+        </label>
+        <button id="btnClearLocal" class="danger">Smazat lokální data</button>
+      </div>
+
+      <details>
+        <summary>Debug stav</summary>
+        <pre id="debug"></pre>
+      </details>
     </section>
   </div>
 
