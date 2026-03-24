@@ -1,83 +1,60 @@
-{
-  "version": 1,
-  "foods": [
-    {
-      "id": "michana-vajicka",
-      "name": "Míchaná vajíčka",
-      "meal_type": [
-        "snídaně"
-      ],
-      "time_category": "0-30",
-      "methods": [],
-      "ingredients": [
-        "vejce",
-        "slanina"
-      ],
-      "tags": [
-        "rychlé"
-      ],
-      "weight": 1
-    },
-    {
-      "id": "sneci-z-listoveho-testa",
-      "name": "Šneci z listového těsta",
-      "meal_type": [
-        "večeře",
-        "svačina"
-      ],
-      "time_category": "0-30",
-      "methods": [
-        "remoska",
-        "trouba"
-      ],
-      "ingredients": [
-        "listové těsto",
-        "kečup",
-        "šunka",
-        "sýr"
-      ],
-      "tags": [],
-      "weight": 1
-    },
-    {
-      "id": "testovinovy-salat",
-      "name": "Těstovinový salát",
-      "meal_type": [
-        "oběd",
-        "večeře"
-      ],
-      "time_category": "30-60",
-      "methods": [],
-      "ingredients": [
-        "testoviny",
-        "jogurt",
-        "majoneza",
-        "syr",
-        "kukuřice",
-        "rajce",
-        "okurka",
-        "paprika",
-        "krabí tyčinky"
-      ],
-      "tags": [
-        "studené"
-      ],
-      "weight": 1
-    },
-    {
-      "id": "pecena-omacka-z-papriky-a-rajcat",
-      "name": "Pečená omáčka z papriky a rajčat",
-      "meal_type": [
-        "oběd",
-        "večeře"
-      ],
-      "time_category": "0-30",
-      "methods": [
-        "remoska",
-        "trouba",
-        "mixér"
-      ],
-      "ingredients": [],
-      "tags": [],
-      "weight": 1
-    }
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Co vařit?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Co vařit?</h1>
+      <p class="muted">Jednoduchý losovač jídel z databáze.</p>
+    </header>
+
+    <section class="card">
+      <h2>Filtry</h2>
+
+      <div class="grid">
+        <label>
+          Typ jídla
+          <select id="mealType">
+            <option value="">(libovolně)</option>
+          </select>
+        </label>
+
+        <label>
+          Čas
+          <select id="timeCategory">
+            <option value="">(libovolně)</option>
+            <option value="0-30">0–30 min</option>
+            <option value="30-60">30–60 min</option>
+            <option value="60+">60+ min</option>
+          </select>
+        </label>
+
+        <label>
+          Tag
+          <select id="tag">
+            <option value="">(libovolně)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="row">
+        <button id="btnPick" class="primary">Vylosuj jídlo</button>
+        <button id="btnAgain">Znovu</button>
+        <button id="btnReset" class="danger">Reset filtrů</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Výsledek</h2>
+      <div id="result" class="result muted">Klikni na „Vylosuj jídlo“.</div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
