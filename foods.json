@@ -2,25 +2,1207 @@
   "version": 1,
   "foods": [
     {
-      "id": "spaghetti-carbonara",
-      "name": "Špagety carbonara",
-      "time_min": 25,
-      "difficulty": 2,
-      "tags": ["těstoviny", "rychlé", "večeře"],
-      "methods": ["pánev", "hrnec"],
-      "cuisine": "italská",
-      "ingredients": ["špagety", "vejce", "slanina", "parmazán"],
+      "id": "michana-vajicka",
+      "name": "Míchaná vajíčka",
+      "meal_type": [
+        "snídaně"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [
+        "vejce",
+        "slanina"
+      ],
+      "tags": [
+        "rychlé"
+      ],
       "weight": 1
     },
     {
-      "id": "chicken-rice",
-      "name": "Kuře na pánvi s rýží",
-      "time_min": 35,
-      "difficulty": 2,
-      "tags": ["maso", "oběd", "večeře"],
-      "methods": ["pánev", "hrnec"],
-      "cuisine": "běžná",
-      "ingredients": ["kuřecí", "rýže", "zelenina"],
+      "id": "sneci-z-listoveho-testa",
+      "name": "Šneci z listového těsta",
+      "meal_type": [
+        "večeře",
+        "svačina"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "remoska",
+        "trouba"
+      ],
+      "ingredients": [
+        "listové těsto",
+        "kečup",
+        "šunka",
+        "sýr"
+      ],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "testovinovy-salat",
+      "name": "Těstovinový salát",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [
+        "testoviny",
+        "jogurt",
+        "majoneza",
+        "syr",
+        "kukuřice",
+        "rajce",
+        "okurka",
+        "paprika",
+        "krabí tyčinky"
+      ],
+      "tags": [
+        "studené"
+      ],
+      "weight": 1
+    },
+    {
+      "id": "pecena-omacka-z-papriky-a-rajcat",
+      "name": "Pečená omáčka z papriky a rajčat",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "remoska",
+        "trouba",
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "spenatove-testoviny",
+      "name": "Špenátové těstoviny",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "bramboraky",
+      "name": "Bramboráky",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kremova-cesnecka",
+      "name": "Krémová česnečka",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "ceske-rizoto",
+      "name": "České rizoto",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "mrkvova-pomazanka",
+      "name": "Mrkvová pomazánka",
+      "meal_type": [
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "platek-s-bramborama-a-zeleninou",
+      "name": "Plátek s bramborama a zeleninou",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [
+        "remoska",
+        "trouba"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "tousty",
+      "name": "Tousty",
+      "meal_type": [
+        "svačina",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "guacamole",
+      "name": "Guacamole",
+      "meal_type": [
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "rizky",
+      "name": "Řízky",
+      "meal_type": [
+        "oběd"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "salat-s-melounem-a-balkanem",
+      "name": "Salát s melounem a balkánem",
+      "meal_type": [
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "asie-podle-thermomixu",
+      "name": "Asie podle thermomixu",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "sushi",
+      "name": "Sushi",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "60+",
+      "methods": [
+        "balítko"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "brokolicova-polevka",
+      "name": "Brokolicová polévka",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "maso-v-mrkvi",
+      "name": "Maso v mrkvi",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "60+",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "ceasar-salat",
+      "name": "Ceasar salát",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "hraskova-polevka",
+      "name": "Hrášková polévka",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "quesadilla",
+      "name": "Quesadilla",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "gril"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "tortily",
+      "name": "Tortily",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "gril"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "nudle-s-masem-a-zeleninou",
+      "name": "Nudle s masem a zeleninou",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "panenka-s-jablkama",
+      "name": "Panenka s jablkama",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "polevka-z-cervene-cocky",
+      "name": "Polévka z červené čočky",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "bagetky-s-masem-a-zeleninou",
+      "name": "Bagetky s masem a zeleninou",
+      "meal_type": [
+        "oběd",
+        "svačina"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "chilli-con-carne",
+      "name": "Chilli con carne",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "omacka-z-medvediho-cesneku",
+      "name": "Omáčka z medvědího česneku",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kvetakova-polevka",
+      "name": "Květáková polévka",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "pomazanka-z-medvediho-cesneku",
+      "name": "Pomazánka z medvědího česneku",
+      "meal_type": [
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "rizoto-s-hraskovym-pyre",
+      "name": "Rizoto s hráškovým pyré",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "cesnecka",
+      "name": "Česnečka",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "livanecky",
+      "name": "Lívanečky",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "penne-ala-vodka",
+      "name": "Penne ala vodka",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "smazak",
+      "name": "Smažák",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "losos-v-teryiaki-omacce-fazolky-ryze",
+      "name": "Losos v teryiaki omáčce, fazolky, rýže",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "bolonske-spagety",
+      "name": "Boloňské špagety",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "vyvar",
+      "name": "Vývar",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "60+",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "sopak",
+      "name": "Šopák",
+      "meal_type": [
+        "večeře",
+        "svačina"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "smetanova-omacka",
+      "name": "Smetanová omáčka",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "svickova",
+      "name": "Svíčková",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "60+",
+      "methods": [
+        "mixér"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "krupicova-kase",
+      "name": "Krupicová kaše",
+      "meal_type": [
+        "večeře"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "cervene-kari-s-kvetakem",
+      "name": "Červené kari s květákem",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "caprese-bagetky",
+      "name": "Caprese bagetky",
+      "meal_type": [
+        "oběd",
+        "svačina"
+      ],
+      "time_category": "0-30",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "letni-zavitky-s-arasidovou-omackou",
+      "name": "Letní závitky s arašídovou omáčkou",
+      "meal_type": [
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "langose",
+      "name": "Langoše",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "zapecene-hranolky-se-slaninou-a-cedarem",
+      "name": "Zapečené hranolky se slaninou a čedarem",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [
+        "remoska",
+        "trouba"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "zapecene-testoviny",
+      "name": "Zapečené těstoviny",
+      "meal_type": [
+        "oběd",
+        "večeře"
+      ],
+      "time_category": "30-60",
+      "methods": [
+        "remoska",
+        "trouba"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "muffiny",
+      "name": "Muffiny",
+      "meal_type": [
+        "snídaně",
+        "svačina"
+      ],
+      "time_category": "0-30",
+      "methods": [
+        "remoska",
+        "trouba"
+      ],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "croissanty-z-listoveho-testa",
+      "name": "Croissanty z listového těsta",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "halusky",
+      "name": "Halušky",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "parky-v-rohliku",
+      "name": "Párky v rohlíku",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "pizza",
+      "name": "Pizza",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "panenka-s-parmazanovyma-bramborama-a-omackou-z-peceneho-cesneku",
+      "name": "Panenka s parmazánovýma bramborama a omáčkou z pečeného česneku",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "noky-s-brokolicovym-pestem",
+      "name": "Noky s brokolicovým pestem",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kakaovy-bananabread",
+      "name": "Kakaový bananabread",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "jablecny-kolac",
+      "name": "Jablečný koláč",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "poke-bowl",
+      "name": "Poké bowl",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "chia-pudink",
+      "name": "Chia pudink",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kure-na-paprice",
+      "name": "Kuře na paprice",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "sekana",
+      "name": "Sekaná",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "ovesna-kase",
+      "name": "Ovesná kaše",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kynute-buchty",
+      "name": "Kynuté buchty",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "mechovy-dort",
+      "name": "Mechový dort",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "rizoto-s-medvedim-cesnekem",
+      "name": "Rizoto s medvědím česnekem",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "katuv-sleh",
+      "name": "Katův šleh",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "mazanec",
+      "name": "Mazanec",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "quiche",
+      "name": "Quiche",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "salamounka",
+      "name": "Šalamounka",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "losos-s-bramborama-a-zeleninou",
+      "name": "Losos s bramborama a zeleninou",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "nachosky-s-dipem",
+      "name": "Nachosky s dipem",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "parky-v-testicku",
+      "name": "Párky v těstíčku",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "burtgulas",
+      "name": "Buřtguláš",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "zapecene-brambory",
+      "name": "Zapečené brambory",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "pinsa",
+      "name": "Pinsa",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "sunkova-pena",
+      "name": "Šunková pěna",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "trhane-maso",
+      "name": "Trhané maso",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "babovka",
+      "name": "Bábovka",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "strudl",
+      "name": "Štrůdl",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "rajcatovy-kuskus",
+      "name": "Rajčatový kuskus",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kuskus-s-masem-a-zeleninou",
+      "name": "Kuskus s masem a zeleninou",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "pernik",
+      "name": "Perník",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "smetanova-ryze",
+      "name": "Smetanová rýže",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "cheesecake",
+      "name": "Cheesecake",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kebab",
+      "name": "Kebab",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kureci-tikka-kari",
+      "name": "Kuřecí tikka kari",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "burgery",
+      "name": "Burgery",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "tacos",
+      "name": "Tacos",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "pitta-chleb",
+      "name": "Pitta chléb",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "zapecene-housticky-se-sunkou-a-syrem",
+      "name": "Zapečené houstičky  se šunkou a sýrem",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "kary",
+      "name": "Kary",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "horcicovo-smetanova-omacka",
+      "name": "Hořčicovo smetanová omáčka",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "rajska-omacka",
+      "name": "Rajská omáčka",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "cervene-kari",
+      "name": "Červené kari",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "zdendova-kotleta",
+      "name": "Zdendova kotleta",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "zdendovy-brambory",
+      "name": "Zdendovy brambory",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "ryba-na-masle",
+      "name": "Ryba na másle",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "hrachovka",
+      "name": "Hrachovka",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "club-sandwich",
+      "name": "Club sandwich",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
+      "weight": 1
+    },
+    {
+      "id": "bublanina",
+      "name": "Bublanina",
+      "meal_type": [],
+      "time_category": "",
+      "methods": [],
+      "ingredients": [],
+      "tags": [],
       "weight": 1
     }
   ]
