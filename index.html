@@ -16,44 +16,35 @@
     <section class="card">
       <h2>Filtry</h2>
 
-      <div class="grid">
-        <label>
-          Typ jídla
-          <select id="mealType">
-            <option value="">(libovolně)</option>
-          </select>
-        </label>
+      <div class="grid filters-grid">
+        <div>
+          <label class="group-label">Typ jídla</label>
+          <div id="mealTypeGroup" class="check-group"></div>
+        </div>
 
-        <label>
-          Čas
-          <select id="timeCategory">
-            <option value="">(libovolně)</option>
-            <option value="0-30">0–30 min</option>
-            <option value="30-60">30–60 min</option>
-            <option value="60+">60+ min</option>
-          </select>
-        </label>
+        <div>
+          <label class="group-label">Čas</label>
+          <div id="timeCategoryGroup" class="check-group">
+            <label class="check-item"><input type="checkbox" value="0-30"> 0–30 min</label>
+            <label class="check-item"><input type="checkbox" value="30-60"> 30–60 min</label>
+            <label class="check-item"><input type="checkbox" value="60+"> 60+ min</label>
+          </div>
+        </div>
 
-        <label>
-          Tag
-          <select id="tag">
-            <option value="">(libovolně)</option>
-          </select>
-        </label>
+        <div>
+          <label class="group-label">Tagy</label>
+          <div id="tagGroup" class="check-group"></div>
+        </div>
 
-        <label>
-          Způsob přípravy
-          <select id="method">
-            <option value="">(libovolně)</option>
-          </select>
-        </label>
+        <div>
+          <label class="group-label">Způsob přípravy</label>
+          <div id="methodGroup" class="check-group"></div>
+        </div>
 
-        <label>
-          Hlavní surovina
-          <select id="ingredient">
-            <option value="">(libovolně)</option>
-          </select>
-        </label>
+        <div>
+          <label class="group-label">Suroviny</label>
+          <div id="ingredientGroup" class="check-group"></div>
+        </div>
       </div>
 
       <div class="row">
@@ -75,10 +66,62 @@
     </section>
 
     <section class="card">
+      <h2>Přidat vlastní jídlo</h2>
+
+      <div class="grid">
+        <label>
+          Název
+          <input id="customName" type="text" placeholder="Např. Tortilla s kuřetem">
+        </label>
+
+        <label>
+          Typ jídla
+          <input id="customMealType" type="text" placeholder="oběd|večeře">
+        </label>
+
+        <label>
+          Čas
+          <select id="customTimeCategory">
+            <option value="0-30">0–30 min</option>
+            <option value="30-60">30–60 min</option>
+            <option value="60+">60+ min</option>
+          </select>
+        </label>
+
+        <label>
+          Způsob přípravy
+          <input id="customMethods" type="text" placeholder="pánev|trouba">
+        </label>
+
+        <label>
+          Suroviny
+          <input id="customIngredients" type="text" placeholder="kuře|tortilla|sýr">
+        </label>
+
+        <label>
+          Tagy
+          <input id="customTags" type="text" placeholder="rychlé|maso">
+        </label>
+
+        <label>
+          Váha
+          <input id="customWeight" type="number" min="1" step="1" value="1">
+        </label>
+      </div>
+
+      <div class="row">
+        <button id="btnAddCustom" class="primary">Přidat jídlo</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Moje vlastní jídla</h2>
+      <div id="customFoodsList" class="custom-list muted">Zatím žádná vlastní jídla.</div>
+    </section>
+
+    <section class="card">
       <h2>Moje data</h2>
-      <p class="muted">
-        Oblíbené, historie a skrytá jídla se ukládají lokálně do prohlížeče.
-      </p>
+      <p class="muted">Oblíbené, historie, skrytá jídla a vlastní jídla se ukládají lokálně.</p>
 
       <div class="row">
         <button id="btnExport">Export JSON</button>
