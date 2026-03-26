@@ -33,6 +33,99 @@ h2 { margin-top: 0; }
   gap: 12px;
 }
 
+/* --- MULTI-SELECT KOMPONENTA --- */
+.multi-select {
+  position: relative;
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.ms-header {
+  min-height: 42px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  cursor: text;
+}
+
+.ms-header:focus-within {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.ms-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ms-chip {
+  background: #e9ecef;
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.ms-chip-remove {
+  cursor: pointer;
+  color: #888;
+  font-weight: bold;
+}
+
+.ms-chip-remove:hover {
+  color: #d9534f;
+}
+
+.ms-search {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 120px;
+  background: transparent;
+  padding: 4px 0;
+}
+
+.ms-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+}
+
+.ms-option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.ms-option:hover, .ms-option.focused {
+  background: #f1f5f9;
+  color: #007bff;
+}
+
+.ms-empty {
+  padding: 8px 12px;
+  color: #888;
+  font-style: italic;
+}
+
 .filters-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
