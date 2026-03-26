@@ -303,7 +303,11 @@ function updateActionButtons() {
   }
 }
 
+let isSpinning = false;
+
 function pickFood() {
+  if (isSpinning) return;
+
   const foods = getAllFoods();
   const filters = readFilters();
   const candidates = applyFilters(foods, filters);
@@ -315,9 +319,39 @@ function pickFood() {
     return;
   }
 
-  lastPick = weightedPick(candidates);
-  setResult(lastPick);
-  refreshDebug();
+  isSpinning = true;
+  el("btnPick").disabled = true;
+  el("btnAgain").disabled = true;
+
+  const container = el("resultContainer");
+  const box = el("result");
+  const imgContainer = el("resultImageContainer");
+
+  container.classList.remove("muted");
+  imgContainer.style.display = "none"; // Během točení obrázek schováme
+
+  let spins = 0;
+  const maxSpins = 15; // Počet "probliknutí"
+  const spinInterval = 70; // Rychlost problikávání v milisekundách
+
+  const spinTimer = setInterval(() => {
+    // Pro vizuální efekt vybíráme čistě náhodně
+    const randomCandidate = candidates[Math.floor(Math.random() * candidates.length)];
+    box.innerHTML = `<div class="result-title spin-text">${escapeHtml(randomCandidate.name)}</div>`;
+    spins++;
+
+    if (spins >= maxSpins) {
+      clearInterval(spinTimer);
+      
+      lastPick = weightedPick(candidates);
+      setResult(lastPick);
+      refreshDebug();
+      
+      isSpinning = false;
+      el("btnPick").disabled = false;
+      el("btnAgain").disabled = false;
+    }
+  }, spinInterval);
 }
 
 function resetFilters() {
