@@ -207,3 +207,68 @@ pre {
     flex-direction: column;
   }
 }
+/* --- NOVÉ STYLY PRO OBRÁZKY A VÝSLEDEK --- */
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+  min-height: 200px; /* Aby karta při losování moc neskákala */
+  justify-content: center;
+}
+
+.result-image-container {
+  width: 100%;
+  max-width: 400px; /* Maximální šířka obrázku */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.food-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3; /* Poměr stran obrázku (lze změnit např. na 16/9) */
+  object-fit: cover; /* Zajistí, že obrázek vyplní prostor bez deformace */
+  display: block;
+}
+
+/* --- ANIMACE LOSOVÁNÍ --- */
+
+.spin-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #888;
+  animation: pop 0.15s ease-in-out alternate infinite;
+}
+
+@keyframes pop {
+  from { transform: scale(0.98); opacity: 0.7; }
+  to { transform: scale(1.02); opacity: 1; }
+}
+
+/* --- VYLEPŠENÍ FILTRŮ (SKROLOVÁNÍ) --- */
+
+.check-group {
+  max-height: 180px; /* Omezí výšku seznamu checkboxů */
+  overflow-y: auto;  /* Přidá posuvník, pokud je položek moc */
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+/* Hezký vzhled posuvníku pro Webkit prohlížeče (Chrome, Safari, Edge) */
+.check-group::-webkit-scrollbar {
+  width: 6px;
+}
+.check-group::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+.check-group::-webkit-scrollbar-track {
+  background: transparent;
+}
