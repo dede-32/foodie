@@ -161,42 +161,139 @@ async function loadDB() {
   db = data;
 }
 
-function renderCheckboxGroup(containerId, values) {
-  const container = el(containerId);
-  container.innerHTML = values.map((v) => `
-    <label class="check-item">
-      <input type="checkbox" value="${escapeHtml(v)}">
-      ${escapeHtml(v)}
-    </label>
-  `).join("");
-}
-
 function fillFilterOptions() {
   const foods = getAllFoods();
 
   const mealTypes = uniq(foods.flatMap((x) => asArray(x.meal_type)).filter(Boolean));
+  const timeCategories = uniq(foods.map(x => x.time_category).filter(Boolean)); // Načítáme dynamicky z dat
   const tags = uniq(foods.flatMap((x) => asArray(x.tags)).filter(Boolean));
   const methods = uniq(foods.flatMap((x) => asArray(x.methods)).filter(Boolean));
   const ingredients = uniq(foods.flatMap((x) => asArray(x.ingredients)).filter(Boolean));
 
-  renderCheckboxGroup("mealTypeGroup", mealTypes);
-  renderCheckboxGroup("tagGroup", tags);
-  renderCheckboxGroup("methodGroup", methods);
-  renderCheckboxGroup("ingredientGroup", ingredients);
+  // Inicializace našich nových komponent
+  initMultiSelect("ms-mealType", mealTypes, "Vyberte typ...");
+  initMultiSelect("ms-timeCategory", timeCategories, "Vyberte čas...");
+  initMultiSelect("ms-tags", tags, "Hledat tag...");
+  initMultiSelect("ms-methods", methods, "Vyberte přípravu...");
+  initMultiSelect("ms-ingredients", ingredients, "Hledat surovinu...");
 }
 
-function getCheckedValues(containerId) {
-  return Array.from(el(containerId).querySelectorAll('input[type="checkbox"]:checked'))
-    .map((x) => x.value);
+// Globální registr pro naše custom multi-selecty
+const msInstances = {};
+
+function initMultiSelect(containerId, optionsList, placeholderText = "Hledat...") {
+  const container = el(containerId);
+  if (!container) return;
+
+  // Vyčistíme kontejner
+  container.innerHTML = `
+    <div class="ms-header">
+      <div class="ms-chips"></div>
+      <input type="text" class="ms-search" placeholder="${placeholderText}">
+    </div>
+    <div class="ms-dropdown"></div>
+  `;
+
+  const header = container.querySelector('.ms-header');
+  const searchInput = container.querySelector('.ms-search');
+  const dropdown = container.querySelector('.ms-dropdown');
+  const chipsContainer = container.querySelector('.ms-chips');
+
+  let selected = new Set();
+
+  function renderDropdown(filter = "") {
+    const term = filter.toLowerCase().trim();
+    // Filtrujeme možnosti, které ještě nejsou vybrané a odpovídají hledání
+    const available = optionsList.filter(o => !selected.has(o) && o.toLowerCase().includes(term));
+
+    if (available.length === 0) {
+      dropdown.innerHTML = `<div class="ms-empty">Nic nenalezeno</div>`;
+      return;
+    }
+
+    dropdown.innerHTML = available.map(o => `
+      <div class="ms-option" data-val="${escapeHtml(o)}">${escapeHtml(o)}</div>
+    `).join('');
+  }
+
+  function renderChips() {
+    chipsContainer.innerHTML = Array.from(selected).map(o => `
+      <span class="ms-chip">
+        ${escapeHtml(o)} 
+        <span class="ms-chip-remove" data-val="${escapeHtml(o)}">×</span>
+      </span>
+    `).join('');
+    // Skryjeme placeholder, pokud je něco vybráno
+    searchInput.placeholder = selected.size > 0 ? "" : placeholderText;
+  }
+
+  // --- EVENT LISTENERY ---
+
+  // Otevření dropdownu při kliknutí do inputu
+  header.addEventListener('click', () => {
+    searchInput.focus();
+    renderDropdown(searchInput.value);
+    dropdown.style.display = 'block';
+  });
+
+  // Psaní do inputu (filtrování)
+  searchInput.addEventListener('input', (e) => {
+    renderDropdown(e.target.value);
+    dropdown.style.display = 'block';
+  });
+
+  // Kliknutí na možnost v dropdownu
+  dropdown.addEventListener('click', (e) => {
+    if (e.target.classList.contains('ms-option')) {
+      const val = e.target.getAttribute('data-val');
+      selected.add(val);
+      searchInput.value = '';
+      renderChips();
+      dropdown.style.display = 'none';
+      searchInput.focus();
+    }
+  });
+
+  // Kliknutí na křížek u vybrané položky
+  chipsContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('ms-chip-remove')) {
+      const val = e.target.getAttribute('data-val');
+      selected.delete(val);
+      renderChips();
+      renderDropdown(searchInput.value); // Překreslení dropdownu, položka se vrací
+      e.stopPropagation(); // Zabránění otevření dropdownu
+    }
+  });
+
+  // Uložení instrukcí pro čtení a reset filtrů
+  msInstances[containerId] = {
+    getSelected: () => Array.from(selected),
+    reset: () => {
+      selected.clear();
+      searchInput.value = '';
+      renderChips();
+      dropdown.style.display = 'none';
+    }
+  };
 }
+
+// Zavření všech dropdownů při kliknutí mimo ně
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.multi-select').forEach(ms => {
+    if (!ms.contains(e.target)) {
+      ms.querySelector('.ms-dropdown').style.display = 'none';
+    }
+  });
+});
 
 function readFilters() {
+  // Čteme data z našich uložených instancí
   return {
-    mealTypes: getCheckedValues("mealTypeGroup"),
-    timeCategories: getCheckedValues("timeCategoryGroup"),
-    tags: getCheckedValues("tagGroup"),
-    methods: getCheckedValues("methodGroup"),
-    ingredients: getCheckedValues("ingredientGroup")
+    mealTypes: msInstances["ms-mealType"]?.getSelected() || [],
+    timeCategories: msInstances["ms-timeCategory"]?.getSelected() || [],
+    tags: msInstances["ms-tags"]?.getSelected() || [],
+    methods: msInstances["ms-methods"]?.getSelected() || [],
+    ingredients: msInstances["ms-ingredients"]?.getSelected() || []
   };
 }
 
@@ -355,9 +452,8 @@ function pickFood() {
 }
 
 function resetFilters() {
-  document.querySelectorAll('.check-group input[type="checkbox"]').forEach((cb) => {
-    cb.checked = false;
-  });
+  // Resetujeme všechny custom selecty
+  Object.values(msInstances).forEach(instance => instance.reset());
 
   lastPick = null;
   setInitialMessage();
