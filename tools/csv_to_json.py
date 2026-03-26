@@ -65,6 +65,7 @@ def main():
     with input_path.open("r", encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f, dialect=dialect)
 
+        # Odstranili jsme "img", už ho v CSV nepotřebujeme
         required_columns = {
             "name",
             "meal_type",
@@ -99,6 +100,8 @@ def main():
             food = {
                 "id": unique_id,
                 "name": name,
+                # Zde se automaticky vytvoří cesta k obrázku podle ID
+                "img": f"images/foods/{unique_id}.jpg", 
                 "meal_type": split_pipe_list(row.get("meal_type", "")),
                 "time_category": (row.get("time_min") or "").strip(),                
                 "methods": split_pipe_list(row.get("methods", "")),
