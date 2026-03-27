@@ -288,6 +288,12 @@ function setInitialMessage() {
   container.classList.add("muted");
   imgContainer.style.display = "none";
   box.textContent = "Klikni na „Vylosuj jídlo“.";
+
+  // --- TADY JE ZMĚNA: Vrátíme původní text na tlačítko ---
+  const pickBtn = el("btnPick");
+  if (pickBtn) {
+      pickBtn.textContent = "Vylosuj jídlo";
+  }
 }
 
 function setNoMatchMessage() {
@@ -367,6 +373,12 @@ function setResult(food, note = "") {
       ${note ? `<div class="muted">${escapeHtml(note)}</div>` : ""}
     </div>
   `;
+
+  // --- NOVINKA: Změní text hlavního tlačítka ---
+  const pickBtn = el("btnPick");
+  if (pickBtn) {
+      pickBtn.textContent = "Zkus to znovu";
+  }
 
   updateActionButtons();
 }
@@ -548,7 +560,6 @@ function refreshDebug() {
 
 function wireUI() {
   el("btnPick").addEventListener("click", pickFood);
-  el("btnAgain").addEventListener("click", pickFood);
   el("btnReset").addEventListener("click", resetFilters);
 
   el("btnFav").addEventListener("click", toggleFavorite);
