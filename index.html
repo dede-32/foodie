@@ -52,9 +52,15 @@
 
     <section class="card">
       <h2>Výsledek</h2>
-      <div id="result" class="result muted">Klikni na „Vylosuj jídlo“.</div>
+      
+      <div id="resultContainer" class="result-container muted">
+         <div id="resultImageContainer" class="result-image-container" style="display: none;">
+             <img id="resultImage" src="" alt="Obrázek jídla" class="food-image" />
+         </div>
+         <div id="result" class="result">Klikni na „Vylosuj jídlo“.</div>
+      </div>
 
-      <div class="row">
+      <div class="row" style="margin-top: 1rem;">
         <button id="btnFav" disabled>⭐ Oblíbené</button>
         <button id="btnCooked" disabled>✅ Uvařeno dnes</button>
         <button id="btnSkip" disabled>🙅 Nechci 7 dní</button>
@@ -62,62 +68,8 @@
     </section>
 
     <section class="card">
-      <h2>Přidat vlastní jídlo</h2>
-
-      <div class="grid">
-        <label>
-          Název
-          <input id="customName" type="text" placeholder="Např. Tortilla s kuřetem">
-        </label>
-
-        <label>
-          Typ jídla
-          <input id="customMealType" type="text" placeholder="oběd|večeře">
-        </label>
-
-        <label>
-          Čas
-          <select id="customTimeCategory">
-            <option value="0-30">0–30 min</option>
-            <option value="30-60">30–60 min</option>
-            <option value="60+">60+ min</option>
-          </select>
-        </label>
-
-        <label>
-          Způsob přípravy
-          <input id="customMethods" type="text" placeholder="pánev|trouba">
-        </label>
-
-        <label>
-          Suroviny
-          <input id="customIngredients" type="text" placeholder="kuře|tortilla|sýr">
-        </label>
-
-        <label>
-          Tagy
-          <input id="customTags" type="text" placeholder="rychlé|maso">
-        </label>
-
-        <label>
-          Váha
-          <input id="customWeight" type="number" min="1" step="1" value="1">
-        </label>
-      </div>
-
-      <div class="row">
-        <button id="btnAddCustom" class="primary">Přidat jídlo</button>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Moje vlastní jídla</h2>
-      <div id="customFoodsList" class="custom-list muted">Zatím žádná vlastní jídla.</div>
-    </section>
-
-    <section class="card">
       <h2>Moje data</h2>
-      <p class="muted">Oblíbené, historie, skrytá jídla a vlastní jídla se ukládají lokálně.</p>
+      <p class="muted">Oblíbené, historie a skrytá jídla se ukládají lokálně.</p>
 
       <div class="row">
         <button id="btnExport">Export JSON</button>

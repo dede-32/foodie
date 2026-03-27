@@ -4,6 +4,7 @@
     {
       "id": "michana-vajicka",
       "name": "Míchaná vajíčka",
+      "img": "images/foods/michana-vajicka.webp",
       "meal_type": [
         "snídaně"
       ],
@@ -21,6 +22,7 @@
     {
       "id": "sneci-z-listoveho-testa",
       "name": "Šneci z listového těsta",
+      "img": "images/foods/sneci-z-listoveho-testa.webp",
       "meal_type": [
         "večeře",
         "svačina"
@@ -42,6 +44,7 @@
     {
       "id": "testovinovy-salat",
       "name": "Těstovinový salát",
+      "img": "images/foods/testovinovy-salat.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -67,6 +70,7 @@
     {
       "id": "pecena-omacka-z-papriky-a-rajcat",
       "name": "Pečená omáčka z papriky a rajčat",
+      "img": "images/foods/pecena-omacka-z-papriky-a-rajcat.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -84,6 +88,7 @@
     {
       "id": "spenatove-testoviny",
       "name": "Špenátové těstoviny",
+      "img": "images/foods/spenatove-testoviny.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -99,6 +104,7 @@
     {
       "id": "bramboraky",
       "name": "Bramboráky",
+      "img": "images/foods/bramboraky.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -112,6 +118,7 @@
     {
       "id": "kremova-cesnecka",
       "name": "Krémová česnečka",
+      "img": "images/foods/kremova-cesnecka.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -127,6 +134,7 @@
     {
       "id": "ceske-rizoto",
       "name": "České rizoto",
+      "img": "images/foods/ceske-rizoto.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -140,6 +148,7 @@
     {
       "id": "mrkvova-pomazanka",
       "name": "Mrkvová pomazánka",
+      "img": "images/foods/mrkvova-pomazanka.webp",
       "meal_type": [
         "večeře"
       ],
@@ -152,6 +161,7 @@
     {
       "id": "platek-s-bramborama-a-zeleninou",
       "name": "Plátek s bramborama a zeleninou",
+      "img": "images/foods/platek-s-bramborama-a-zeleninou.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -168,6 +178,7 @@
     {
       "id": "tousty",
       "name": "Tousty",
+      "img": "images/foods/tousty.webp",
       "meal_type": [
         "svačina",
         "večeře"
@@ -181,6 +192,7 @@
     {
       "id": "guacamole",
       "name": "Guacamole",
+      "img": "images/foods/guacamole.webp",
       "meal_type": [
         "večeře"
       ],
@@ -193,6 +205,7 @@
     {
       "id": "rizky",
       "name": "Řízky",
+      "img": "images/foods/rizky.webp",
       "meal_type": [
         "oběd"
       ],
@@ -205,6 +218,7 @@
     {
       "id": "salat-s-melounem-a-balkanem",
       "name": "Salát s melounem a balkánem",
+      "img": "images/foods/salat-s-melounem-a-balkanem.webp",
       "meal_type": [
         "večeře"
       ],
@@ -217,6 +231,7 @@
     {
       "id": "asie-podle-thermomixu",
       "name": "Asie podle thermomixu",
+      "img": "images/foods/asie-podle-thermomixu.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -232,6 +247,7 @@
     {
       "id": "sushi",
       "name": "Sushi",
+      "img": "images/foods/sushi.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -247,6 +263,7 @@
     {
       "id": "brokolicova-polevka",
       "name": "Brokolicová polévka",
+      "img": "images/foods/brokolicova-polevka.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -262,6 +279,7 @@
     {
       "id": "maso-v-mrkvi",
       "name": "Maso v mrkvi",
+      "img": "images/foods/maso-v-mrkvi.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -275,6 +293,7 @@
     {
       "id": "ceasar-salat",
       "name": "Ceasar salát",
+      "img": "images/foods/ceasar-salat.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -288,6 +307,7 @@
     {
       "id": "hraskova-polevka",
       "name": "Hrášková polévka",
+      "img": "images/foods/hraskova-polevka.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -303,6 +323,7 @@
     {
       "id": "quesadilla",
       "name": "Quesadilla",
+      "img": "images/foods/quesadilla.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -318,6 +339,7 @@
     {
       "id": "tortily",
       "name": "Tortily",
+      "img": "images/foods/tortily.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -333,6 +355,7 @@
     {
       "id": "nudle-s-masem-a-zeleninou",
       "name": "Nudle s masem a zeleninou",
+      "img": "images/foods/nudle-s-masem-a-zeleninou.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -346,6 +369,7 @@
     {
       "id": "panenka-s-jablkama",
       "name": "Panenka s jablkama",
+      "img": "images/foods/panenka-s-jablkama.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -359,6 +383,7 @@
     {
       "id": "polevka-z-cervene-cocky",
       "name": "Polévka z červené čočky",
+      "img": "images/foods/polevka-z-cervene-cocky.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -374,6 +399,7 @@
     {
       "id": "bagetky-s-masem-a-zeleninou",
       "name": "Bagetky s masem a zeleninou",
+      "img": "images/foods/bagetky-s-masem-a-zeleninou.webp",
       "meal_type": [
         "oběd",
         "svačina"
@@ -387,6 +413,7 @@
     {
       "id": "chilli-con-carne",
       "name": "Chilli con carne",
+      "img": "images/foods/chilli-con-carne.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -400,6 +427,7 @@
     {
       "id": "omacka-z-medvediho-cesneku",
       "name": "Omáčka z medvědího česneku",
+      "img": "images/foods/omacka-z-medvediho-cesneku.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -413,6 +441,7 @@
     {
       "id": "kvetakova-polevka",
       "name": "Květáková polévka",
+      "img": "images/foods/kvetakova-polevka.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -428,6 +457,7 @@
     {
       "id": "pomazanka-z-medvediho-cesneku",
       "name": "Pomazánka z medvědího česneku",
+      "img": "images/foods/pomazanka-z-medvediho-cesneku.webp",
       "meal_type": [
         "večeře"
       ],
@@ -440,6 +470,7 @@
     {
       "id": "rizoto-s-hraskovym-pyre",
       "name": "Rizoto s hráškovým pyré",
+      "img": "images/foods/rizoto-s-hraskovym-pyre.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -455,6 +486,7 @@
     {
       "id": "cesnecka",
       "name": "Česnečka",
+      "img": "images/foods/cesnecka.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -468,6 +500,7 @@
     {
       "id": "livanecky",
       "name": "Lívanečky",
+      "img": "images/foods/livanecky.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -481,6 +514,7 @@
     {
       "id": "penne-ala-vodka",
       "name": "Penne ala vodka",
+      "img": "images/foods/penne-ala-vodka.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -494,6 +528,7 @@
     {
       "id": "smazak",
       "name": "Smažák",
+      "img": "images/foods/smazak.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -507,6 +542,7 @@
     {
       "id": "losos-v-teryiaki-omacce-fazolky-ryze",
       "name": "Losos v teryiaki omáčce, fazolky, rýže",
+      "img": "images/foods/losos-v-teryiaki-omacce-fazolky-ryze.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -520,6 +556,7 @@
     {
       "id": "bolonske-spagety",
       "name": "Boloňské špagety",
+      "img": "images/foods/bolonske-spagety.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -533,6 +570,7 @@
     {
       "id": "vyvar",
       "name": "Vývar",
+      "img": "images/foods/vyvar.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -546,6 +584,7 @@
     {
       "id": "sopak",
       "name": "Šopák",
+      "img": "images/foods/sopak.webp",
       "meal_type": [
         "večeře",
         "svačina"
@@ -559,6 +598,7 @@
     {
       "id": "smetanova-omacka",
       "name": "Smetanová omáčka",
+      "img": "images/foods/smetanova-omacka.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -572,6 +612,7 @@
     {
       "id": "svickova",
       "name": "Svíčková",
+      "img": "images/foods/svickova.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -587,6 +628,7 @@
     {
       "id": "krupicova-kase",
       "name": "Krupicová kaše",
+      "img": "images/foods/krupicova-kase.webp",
       "meal_type": [
         "večeře"
       ],
@@ -599,6 +641,7 @@
     {
       "id": "cervene-kari-s-kvetakem",
       "name": "Červené kari s květákem",
+      "img": "images/foods/cervene-kari-s-kvetakem.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -612,6 +655,7 @@
     {
       "id": "caprese-bagetky",
       "name": "Caprese bagetky",
+      "img": "images/foods/caprese-bagetky.webp",
       "meal_type": [
         "oběd",
         "svačina"
@@ -625,6 +669,7 @@
     {
       "id": "letni-zavitky-s-arasidovou-omackou",
       "name": "Letní závitky s arašídovou omáčkou",
+      "img": "images/foods/letni-zavitky-s-arasidovou-omackou.webp",
       "meal_type": [
         "večeře"
       ],
@@ -637,6 +682,7 @@
     {
       "id": "langose",
       "name": "Langoše",
+      "img": "images/foods/langose.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -650,6 +696,7 @@
     {
       "id": "zapecene-hranolky-se-slaninou-a-cedarem",
       "name": "Zapečené hranolky se slaninou a čedarem",
+      "img": "images/foods/zapecene-hranolky-se-slaninou-a-cedarem.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -666,6 +713,7 @@
     {
       "id": "zapecene-testoviny",
       "name": "Zapečené těstoviny",
+      "img": "images/foods/zapecene-testoviny.webp",
       "meal_type": [
         "oběd",
         "večeře"
@@ -682,6 +730,7 @@
     {
       "id": "muffiny",
       "name": "Muffiny",
+      "img": "images/foods/muffiny.webp",
       "meal_type": [
         "snídaně",
         "svačina"
@@ -698,6 +747,7 @@
     {
       "id": "croissanty-z-listoveho-testa",
       "name": "Croissanty z listového těsta",
+      "img": "images/foods/croissanty-z-listoveho-testa.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -708,6 +758,7 @@
     {
       "id": "halusky",
       "name": "Halušky",
+      "img": "images/foods/halusky.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -718,6 +769,7 @@
     {
       "id": "parky-v-rohliku",
       "name": "Párky v rohlíku",
+      "img": "images/foods/parky-v-rohliku.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -728,6 +780,7 @@
     {
       "id": "pizza",
       "name": "Pizza",
+      "img": "images/foods/pizza.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -738,6 +791,7 @@
     {
       "id": "panenka-s-parmazanovyma-bramborama-a-omackou-z-peceneho-cesneku",
       "name": "Panenka s parmazánovýma bramborama a omáčkou z pečeného česneku",
+      "img": "images/foods/panenka-s-parmazanovyma-bramborama-a-omackou-z-peceneho-cesneku.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -748,6 +802,7 @@
     {
       "id": "noky-s-brokolicovym-pestem",
       "name": "Noky s brokolicovým pestem",
+      "img": "images/foods/noky-s-brokolicovym-pestem.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -758,6 +813,7 @@
     {
       "id": "kakaovy-bananabread",
       "name": "Kakaový bananabread",
+      "img": "images/foods/kakaovy-bananabread.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -768,6 +824,7 @@
     {
       "id": "jablecny-kolac",
       "name": "Jablečný koláč",
+      "img": "images/foods/jablecny-kolac.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -778,6 +835,7 @@
     {
       "id": "poke-bowl",
       "name": "Poké bowl",
+      "img": "images/foods/poke-bowl.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -788,6 +846,7 @@
     {
       "id": "chia-pudink",
       "name": "Chia pudink",
+      "img": "images/foods/chia-pudink.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -798,6 +857,7 @@
     {
       "id": "kure-na-paprice",
       "name": "Kuře na paprice",
+      "img": "images/foods/kure-na-paprice.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -808,6 +868,7 @@
     {
       "id": "sekana",
       "name": "Sekaná",
+      "img": "images/foods/sekana.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -818,6 +879,7 @@
     {
       "id": "ovesna-kase",
       "name": "Ovesná kaše",
+      "img": "images/foods/ovesna-kase.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -828,6 +890,7 @@
     {
       "id": "kynute-buchty",
       "name": "Kynuté buchty",
+      "img": "images/foods/kynute-buchty.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -838,6 +901,7 @@
     {
       "id": "mechovy-dort",
       "name": "Mechový dort",
+      "img": "images/foods/mechovy-dort.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -848,6 +912,7 @@
     {
       "id": "rizoto-s-medvedim-cesnekem",
       "name": "Rizoto s medvědím česnekem",
+      "img": "images/foods/rizoto-s-medvedim-cesnekem.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -858,6 +923,7 @@
     {
       "id": "katuv-sleh",
       "name": "Katův šleh",
+      "img": "images/foods/katuv-sleh.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -868,6 +934,7 @@
     {
       "id": "mazanec",
       "name": "Mazanec",
+      "img": "images/foods/mazanec.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -878,6 +945,7 @@
     {
       "id": "quiche",
       "name": "Quiche",
+      "img": "images/foods/quiche.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -888,6 +956,7 @@
     {
       "id": "salamounka",
       "name": "Šalamounka",
+      "img": "images/foods/salamounka.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -898,6 +967,7 @@
     {
       "id": "losos-s-bramborama-a-zeleninou",
       "name": "Losos s bramborama a zeleninou",
+      "img": "images/foods/losos-s-bramborama-a-zeleninou.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -908,6 +978,7 @@
     {
       "id": "nachosky-s-dipem",
       "name": "Nachosky s dipem",
+      "img": "images/foods/nachosky-s-dipem.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -918,6 +989,7 @@
     {
       "id": "parky-v-testicku",
       "name": "Párky v těstíčku",
+      "img": "images/foods/parky-v-testicku.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -928,6 +1000,7 @@
     {
       "id": "burtgulas",
       "name": "Buřtguláš",
+      "img": "images/foods/burtgulas.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -938,6 +1011,7 @@
     {
       "id": "zapecene-brambory",
       "name": "Zapečené brambory",
+      "img": "images/foods/zapecene-brambory.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -948,6 +1022,7 @@
     {
       "id": "pinsa",
       "name": "Pinsa",
+      "img": "images/foods/pinsa.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -958,6 +1033,7 @@
     {
       "id": "sunkova-pena",
       "name": "Šunková pěna",
+      "img": "images/foods/sunkova-pena.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -968,6 +1044,7 @@
     {
       "id": "trhane-maso",
       "name": "Trhané maso",
+      "img": "images/foods/trhane-maso.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -978,6 +1055,7 @@
     {
       "id": "babovka",
       "name": "Bábovka",
+      "img": "images/foods/babovka.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -988,6 +1066,7 @@
     {
       "id": "strudl",
       "name": "Štrůdl",
+      "img": "images/foods/strudl.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -998,6 +1077,7 @@
     {
       "id": "rajcatovy-kuskus",
       "name": "Rajčatový kuskus",
+      "img": "images/foods/rajcatovy-kuskus.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1008,6 +1088,7 @@
     {
       "id": "kuskus-s-masem-a-zeleninou",
       "name": "Kuskus s masem a zeleninou",
+      "img": "images/foods/kuskus-s-masem-a-zeleninou.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1018,6 +1099,7 @@
     {
       "id": "pernik",
       "name": "Perník",
+      "img": "images/foods/pernik.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1028,6 +1110,7 @@
     {
       "id": "smetanova-ryze",
       "name": "Smetanová rýže",
+      "img": "images/foods/smetanova-ryze.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1038,6 +1121,7 @@
     {
       "id": "cheesecake",
       "name": "Cheesecake",
+      "img": "images/foods/cheesecake.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1048,6 +1132,7 @@
     {
       "id": "kebab",
       "name": "Kebab",
+      "img": "images/foods/kebab.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1058,6 +1143,7 @@
     {
       "id": "kureci-tikka-kari",
       "name": "Kuřecí tikka kari",
+      "img": "images/foods/kureci-tikka-kari.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1068,6 +1154,7 @@
     {
       "id": "burgery",
       "name": "Burgery",
+      "img": "images/foods/burgery.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1078,6 +1165,7 @@
     {
       "id": "tacos",
       "name": "Tacos",
+      "img": "images/foods/tacos.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1088,6 +1176,7 @@
     {
       "id": "pitta-chleb",
       "name": "Pitta chléb",
+      "img": "images/foods/pitta-chleb.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1098,6 +1187,7 @@
     {
       "id": "zapecene-housticky-se-sunkou-a-syrem",
       "name": "Zapečené houstičky  se šunkou a sýrem",
+      "img": "images/foods/zapecene-housticky-se-sunkou-a-syrem.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1108,6 +1198,7 @@
     {
       "id": "kary",
       "name": "Kary",
+      "img": "images/foods/kary.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1118,6 +1209,7 @@
     {
       "id": "horcicovo-smetanova-omacka",
       "name": "Hořčicovo smetanová omáčka",
+      "img": "images/foods/horcicovo-smetanova-omacka.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1128,6 +1220,7 @@
     {
       "id": "rajska-omacka",
       "name": "Rajská omáčka",
+      "img": "images/foods/rajska-omacka.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1138,6 +1231,7 @@
     {
       "id": "cervene-kari",
       "name": "Červené kari",
+      "img": "images/foods/cervene-kari.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1148,6 +1242,7 @@
     {
       "id": "zdendova-kotleta",
       "name": "Zdendova kotleta",
+      "img": "images/foods/zdendova-kotleta.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1158,6 +1253,7 @@
     {
       "id": "zdendovy-brambory",
       "name": "Zdendovy brambory",
+      "img": "images/foods/zdendovy-brambory.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1168,6 +1264,7 @@
     {
       "id": "ryba-na-masle",
       "name": "Ryba na másle",
+      "img": "images/foods/ryba-na-masle.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1178,6 +1275,7 @@
     {
       "id": "hrachovka",
       "name": "Hrachovka",
+      "img": "images/foods/hrachovka.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1188,6 +1286,7 @@
     {
       "id": "club-sandwich",
       "name": "Club sandwich",
+      "img": "images/foods/club-sandwich.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],
@@ -1198,6 +1297,7 @@
     {
       "id": "bublanina",
       "name": "Bublanina",
+      "img": "images/foods/bublanina.webp",
       "meal_type": [],
       "time_category": "",
       "methods": [],

@@ -33,99 +33,6 @@ h2 { margin-top: 0; }
   gap: 12px;
 }
 
-/* --- MULTI-SELECT KOMPONENTA --- */
-.multi-select {
-  position: relative;
-  width: 100%;
-  font-size: 0.95rem;
-}
-
-.ms-header {
-  min-height: 42px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
-  padding: 4px 8px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  cursor: text;
-}
-
-.ms-header:focus-within {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-.ms-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.ms-chip {
-  background: #e9ecef;
-  color: #333;
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
-}
-
-.ms-chip-remove {
-  cursor: pointer;
-  color: #888;
-  font-weight: bold;
-}
-
-.ms-chip-remove:hover {
-  color: #d9534f;
-}
-
-.ms-search {
-  border: none;
-  outline: none;
-  flex: 1;
-  min-width: 120px;
-  background: transparent;
-  padding: 4px 0;
-}
-
-.ms-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  margin-top: 4px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 100;
-  display: none;
-}
-
-.ms-option {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.ms-option:hover, .ms-option.focused {
-  background: #f1f5f9;
-  color: #007bff;
-}
-
-.ms-empty {
-  padding: 8px 12px;
-  color: #888;
-  font-style: italic;
-}
-
 .filters-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -139,31 +46,6 @@ label {
 .group-label {
   font-weight: 600;
   margin-bottom: 8px;
-}
-
-.check-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 10px;
-  border-radius: 10px;
-  background: rgba(0,0,0,.18);
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.check-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.08);
-  font-size: 13px;
-}
-
-.check-item input {
-  margin: 0;
 }
 
 input, select, button {
@@ -208,7 +90,8 @@ button:disabled {
   border-radius: 12px;
   background: rgba(0,0,0,.25);
   border: 1px solid rgba(255,255,255,.10);
-  min-height: 140px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .result-title {
@@ -222,6 +105,7 @@ button:disabled {
   flex-wrap: wrap;
   gap: 8px;
   margin: 10px 0 6px;
+  justify-content: center;
 }
 
 .badge {
@@ -247,6 +131,7 @@ button:disabled {
   display: grid;
   gap: 6px;
   margin-top: 8px;
+  text-align: left;
 }
 
 .file {
@@ -263,78 +148,47 @@ button:disabled {
   display: none;
 }
 
-.custom-list {
-  display: grid;
-  gap: 10px;
-}
-
-.custom-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(0,0,0,.22);
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.custom-item-title {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
 pre {
   white-space: pre-wrap;
   word-break: break-word;
   color: #dce7f5;
+  font-size: 12px;
 }
 
-@media (max-width: 900px) {
-  .grid,
-  .filters-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .custom-item {
-    flex-direction: column;
-  }
-}
-/* --- NOVÉ STYLY PRO OBRÁZKY A VÝSLEDEK --- */
-
+/* --- OBRÁZKY A VÝSLEDEK --- */
 .result-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   align-items: center;
   text-align: center;
-  min-height: 200px; /* Aby karta při losování moc neskákala */
+  min-height: 200px;
   justify-content: center;
+  width: 100%;
 }
 
 .result-image-container {
   width: 100%;
-  max-width: 400px; /* Maximální šířka obrázku */
+  max-width: 400px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
   margin: 0 auto;
 }
 
 .food-image {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3; /* Poměr stran obrázku (lze změnit např. na 16/9) */
-  object-fit: cover; /* Zajistí, že obrázek vyplní prostor bez deformace */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   display: block;
 }
 
 /* --- ANIMACE LOSOVÁNÍ --- */
-
 .spin-text {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #888;
+  color: #a9b7c7;
   animation: pop 0.15s ease-in-out alternate infinite;
 }
 
@@ -343,25 +197,111 @@ pre {
   to { transform: scale(1.02); opacity: 1; }
 }
 
-/* --- VYLEPŠENÍ FILTRŮ (SKROLOVÁNÍ) --- */
-
-.check-group {
-  max-height: 180px; /* Omezí výšku seznamu checkboxů */
-  overflow-y: auto;  /* Přidá posuvník, pokud je položek moc */
-  border: 1px solid #e0e0e0;
-  padding: 0.5rem;
-  border-radius: 6px;
-  background: #fafafa;
+/* --- MULTI-SELECT KOMPONENTA --- */
+.multi-select {
+  position: relative;
+  width: 100%;
+  font-size: 0.95rem;
 }
 
-/* Hezký vzhled posuvníku pro Webkit prohlížeče (Chrome, Safari, Edge) */
-.check-group::-webkit-scrollbar {
+.ms-header {
+  min-height: 42px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 10px;
+  background: rgba(0,0,0,.25);
+  padding: 4px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  cursor: text;
+}
+
+.ms-header:focus-within {
+  border-color: rgba(65,140,255,.8);
+  box-shadow: 0 0 0 2px rgba(65,140,255,.25);
+}
+
+.ms-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ms-chip {
+  background: rgba(255,255,255,.15);
+  color: #e8eef6;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.ms-chip-remove {
+  cursor: pointer;
+  color: #a9b7c7;
+  font-weight: bold;
+}
+
+.ms-chip-remove:hover {
+  color: #ff5050;
+}
+
+.ms-search {
+  border: none;
+  outline: none;
+  flex: 1;
+  min-width: 120px;
+  background: transparent;
+  padding: 4px 0;
+  color: #e8eef6;
+}
+
+.ms-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  background: #1a222c;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+}
+
+.ms-dropdown::-webkit-scrollbar {
   width: 6px;
 }
-.check-group::-webkit-scrollbar-thumb {
-  background-color: #ccc;
+.ms-dropdown::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,.2);
   border-radius: 3px;
 }
-.check-group::-webkit-scrollbar-track {
-  background: transparent;
+
+.ms-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #e8eef6;
+}
+
+.ms-option:hover {
+  background: rgba(65,140,255,.25);
+}
+
+.ms-empty {
+  padding: 8px 12px;
+  color: #a9b7c7;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .grid,
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
 }

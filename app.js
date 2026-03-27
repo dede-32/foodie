@@ -1,7 +1,9 @@
 let db = null;
 let lastPick = null;
+let isSpinning = false;
 
-const LS_KEY = "meal_picker_state_v3";
+// Posunutá verze klíče, jelikož jsme změnili datovou strukturu (smazali customFoods)
+const LS_KEY = "meal_picker_state_v4";
 
 const el = (id) => document.getElementById(id);
 
@@ -11,23 +13,6 @@ function uniq(arr) {
 
 function asArray(value) {
   return Array.isArray(value) ? value : [];
-}
-
-function splitPipeList(value) {
-  if (!value) return [];
-  return String(value)
-    .split("|")
-    .map((x) => x.trim())
-    .filter(Boolean);
-}
-
-function slugify(text) {
-  return String(text)
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
 }
 
 function todayISO() {
@@ -57,29 +42,17 @@ function loadState() {
   try {
     const raw = localStorage.getItem(LS_KEY);
     if (!raw) {
-      return {
-        favorites: [],
-        cooked: {},
-        blockedUntil: {},
-        customFoods: []
-      };
+      return { favorites: [], cooked: {}, blockedUntil: {} };
     }
 
     const parsed = JSON.parse(raw);
-
     return {
       favorites: Array.isArray(parsed.favorites) ? parsed.favorites : [],
       cooked: parsed.cooked && typeof parsed.cooked === "object" ? parsed.cooked : {},
-      blockedUntil: parsed.blockedUntil && typeof parsed.blockedUntil === "object" ? parsed.blockedUntil : {},
-      customFoods: Array.isArray(parsed.customFoods) ? parsed.customFoods : []
+      blockedUntil: parsed.blockedUntil && typeof parsed.blockedUntil === "object" ? parsed.blockedUntil : {}
     };
   } catch {
-    return {
-      favorites: [],
-      cooked: {},
-      blockedUntil: {},
-      customFoods: []
-    };
+    return { favorites: [], cooked: {}, blockedUntil: {} };
   }
 }
 
@@ -88,11 +61,10 @@ let state = loadState();
 function saveState() {
   localStorage.setItem(LS_KEY, JSON.stringify(state));
   refreshDebug();
-  renderCustomFoods();
 }
 
 function getAllFoods() {
-  return [...(db?.foods ?? []), ...state.customFoods];
+  return [...(db?.foods ?? [])];
 }
 
 function isFavorite(foodId) {
@@ -161,31 +133,13 @@ async function loadDB() {
   db = data;
 }
 
-function fillFilterOptions() {
-  const foods = getAllFoods();
-
-  const mealTypes = uniq(foods.flatMap((x) => asArray(x.meal_type)).filter(Boolean));
-  const timeCategories = uniq(foods.map(x => x.time_category).filter(Boolean)); // Načítáme dynamicky z dat
-  const tags = uniq(foods.flatMap((x) => asArray(x.tags)).filter(Boolean));
-  const methods = uniq(foods.flatMap((x) => asArray(x.methods)).filter(Boolean));
-  const ingredients = uniq(foods.flatMap((x) => asArray(x.ingredients)).filter(Boolean));
-
-  // Inicializace našich nových komponent
-  initMultiSelect("ms-mealType", mealTypes, "Vyberte typ...");
-  initMultiSelect("ms-timeCategory", timeCategories, "Vyberte čas...");
-  initMultiSelect("ms-tags", tags, "Hledat tag...");
-  initMultiSelect("ms-methods", methods, "Vyberte přípravu...");
-  initMultiSelect("ms-ingredients", ingredients, "Hledat surovinu...");
-}
-
-// Globální registr pro naše custom multi-selecty
+// --- MULTI-SELECT LOGIKA ---
 const msInstances = {};
 
 function initMultiSelect(containerId, optionsList, placeholderText = "Hledat...") {
   const container = el(containerId);
   if (!container) return;
 
-  // Vyčistíme kontejner
   container.innerHTML = `
     <div class="ms-header">
       <div class="ms-chips"></div>
@@ -203,7 +157,6 @@ function initMultiSelect(containerId, optionsList, placeholderText = "Hledat..."
 
   function renderDropdown(filter = "") {
     const term = filter.toLowerCase().trim();
-    // Filtrujeme možnosti, které ještě nejsou vybrané a odpovídají hledání
     const available = optionsList.filter(o => !selected.has(o) && o.toLowerCase().includes(term));
 
     if (available.length === 0) {
@@ -223,26 +176,20 @@ function initMultiSelect(containerId, optionsList, placeholderText = "Hledat..."
         <span class="ms-chip-remove" data-val="${escapeHtml(o)}">×</span>
       </span>
     `).join('');
-    // Skryjeme placeholder, pokud je něco vybráno
     searchInput.placeholder = selected.size > 0 ? "" : placeholderText;
   }
 
-  // --- EVENT LISTENERY ---
-
-  // Otevření dropdownu při kliknutí do inputu
   header.addEventListener('click', () => {
     searchInput.focus();
     renderDropdown(searchInput.value);
     dropdown.style.display = 'block';
   });
 
-  // Psaní do inputu (filtrování)
   searchInput.addEventListener('input', (e) => {
     renderDropdown(e.target.value);
     dropdown.style.display = 'block';
   });
 
-  // Kliknutí na možnost v dropdownu
   dropdown.addEventListener('click', (e) => {
     if (e.target.classList.contains('ms-option')) {
       const val = e.target.getAttribute('data-val');
@@ -254,18 +201,16 @@ function initMultiSelect(containerId, optionsList, placeholderText = "Hledat..."
     }
   });
 
-  // Kliknutí na křížek u vybrané položky
   chipsContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('ms-chip-remove')) {
       const val = e.target.getAttribute('data-val');
       selected.delete(val);
       renderChips();
-      renderDropdown(searchInput.value); // Překreslení dropdownu, položka se vrací
-      e.stopPropagation(); // Zabránění otevření dropdownu
+      renderDropdown(searchInput.value); 
+      e.stopPropagation();
     }
   });
 
-  // Uložení instrukcí pro čtení a reset filtrů
   msInstances[containerId] = {
     getSelected: () => Array.from(selected),
     reset: () => {
@@ -277,7 +222,6 @@ function initMultiSelect(containerId, optionsList, placeholderText = "Hledat..."
   };
 }
 
-// Zavření všech dropdownů při kliknutí mimo ně
 document.addEventListener('click', (e) => {
   document.querySelectorAll('.multi-select').forEach(ms => {
     if (!ms.contains(e.target)) {
@@ -286,8 +230,23 @@ document.addEventListener('click', (e) => {
   });
 });
 
+function fillFilterOptions() {
+  const foods = getAllFoods();
+
+  const mealTypes = uniq(foods.flatMap((x) => asArray(x.meal_type)).filter(Boolean));
+  const timeCategories = uniq(foods.map(x => x.time_category).filter(Boolean));
+  const tags = uniq(foods.flatMap((x) => asArray(x.tags)).filter(Boolean));
+  const methods = uniq(foods.flatMap((x) => asArray(x.methods)).filter(Boolean));
+  const ingredients = uniq(foods.flatMap((x) => asArray(x.ingredients)).filter(Boolean));
+
+  initMultiSelect("ms-mealType", mealTypes, "Vyberte typ...");
+  initMultiSelect("ms-timeCategory", timeCategories, "Vyberte čas...");
+  initMultiSelect("ms-tags", tags, "Hledat tag...");
+  initMultiSelect("ms-methods", methods, "Vyberte přípravu...");
+  initMultiSelect("ms-ingredients", ingredients, "Hledat surovinu...");
+}
+
 function readFilters() {
-  // Čteme data z našich uložených instancí
   return {
     mealTypes: msInstances["ms-mealType"]?.getSelected() || [],
     timeCategories: msInstances["ms-timeCategory"]?.getSelected() || [],
@@ -322,19 +281,30 @@ function applyFilters(foods, filters) {
 }
 
 function setInitialMessage() {
+  const container = el("resultContainer");
   const box = el("result");
-  box.classList.add("muted");
+  const imgContainer = el("resultImageContainer");
+
+  container.classList.add("muted");
+  imgContainer.style.display = "none";
   box.textContent = "Klikni na „Vylosuj jídlo“.";
 }
 
 function setNoMatchMessage() {
+  const container = el("resultContainer");
   const box = el("result");
-  box.classList.add("muted");
+  const imgContainer = el("resultImageContainer");
+
+  container.classList.add("muted");
+  imgContainer.style.display = "none";
   box.textContent = "Nic nevyhovuje filtrům.";
 }
 
 function setResult(food, note = "") {
+  const container = el("resultContainer");
   const box = el("result");
+  const imgContainer = el("resultImageContainer");
+  const imgEl = el("resultImage");
 
   if (!food) {
     setNoMatchMessage();
@@ -342,7 +312,21 @@ function setResult(food, note = "") {
     return;
   }
 
-  box.classList.remove("muted");
+  container.classList.remove("muted");
+
+  // Ošetření a zobrazení obrázku
+  if (food.img) {
+      imgEl.src = food.img;
+      imgContainer.style.display = "block";
+      
+      // Skrýt kontejner, pokud obrázek fyzicky na disku ještě neexistuje
+      imgEl.onerror = function() {
+          imgContainer.style.display = "none";
+          console.warn(`Obrázek nenalezen: ${food.img}`);
+      };
+  } else {
+      imgContainer.style.display = "none";
+  }
 
   const mealType = asArray(food.meal_type);
   const methods = asArray(food.methods);
@@ -400,8 +384,6 @@ function updateActionButtons() {
   }
 }
 
-let isSpinning = false;
-
 function pickFood() {
   if (isSpinning) return;
 
@@ -425,14 +407,13 @@ function pickFood() {
   const imgContainer = el("resultImageContainer");
 
   container.classList.remove("muted");
-  imgContainer.style.display = "none"; // Během točení obrázek schováme
+  imgContainer.style.display = "none"; // Během animace obrázek schováme
 
   let spins = 0;
-  const maxSpins = 15; // Počet "probliknutí"
-  const spinInterval = 70; // Rychlost problikávání v milisekundách
+  const maxSpins = 15; 
+  const spinInterval = 70;
 
   const spinTimer = setInterval(() => {
-    // Pro vizuální efekt vybíráme čistě náhodně
     const randomCandidate = candidates[Math.floor(Math.random() * candidates.length)];
     box.innerHTML = `<div class="result-title spin-text">${escapeHtml(randomCandidate.name)}</div>`;
     spins++;
@@ -440,6 +421,7 @@ function pickFood() {
     if (spins >= maxSpins) {
       clearInterval(spinTimer);
       
+      // Vybereme finální jídlo se zohledněním vah a historie
       lastPick = weightedPick(candidates);
       setResult(lastPick);
       refreshDebug();
@@ -452,7 +434,6 @@ function pickFood() {
 }
 
 function resetFilters() {
-  // Resetujeme všechny custom selecty
   Object.values(msInstances).forEach(instance => instance.reset());
 
   lastPick = null;
@@ -492,98 +473,6 @@ function blockFor7Days() {
   setResult(lastPick, `Skryto do ${state.blockedUntil[lastPick.id]}.`);
 }
 
-function addCustomFood() {
-  const name = el("customName").value.trim();
-  if (!name) {
-    alert("Vyplň název jídla.");
-    return;
-  }
-
-  const baseId = slugify(name);
-  let uniqueId = `custom-${baseId}`;
-  let counter = 2;
-
-  const allIds = new Set(getAllFoods().map((x) => x.id));
-  while (allIds.has(uniqueId)) {
-    uniqueId = `custom-${baseId}-${counter}`;
-    counter++;
-  }
-
-  const customFood = {
-    id: uniqueId,
-    name,
-    meal_type: splitPipeList(el("customMealType").value),
-    time_category: el("customTimeCategory").value,
-    methods: splitPipeList(el("customMethods").value),
-    ingredients: splitPipeList(el("customIngredients").value),
-    tags: splitPipeList(el("customTags").value),
-    weight: Number(el("customWeight").value) || 1,
-    isCustom: true
-  };
-
-  state.customFoods.push(customFood);
-  saveState();
-  fillFilterOptions();
-
-  el("customName").value = "";
-  el("customMealType").value = "";
-  el("customTimeCategory").value = "0-30";
-  el("customMethods").value = "";
-  el("customIngredients").value = "";
-  el("customTags").value = "";
-  el("customWeight").value = "1";
-
-  alert("Vlastní jídlo bylo přidáno.");
-}
-
-function deleteCustomFood(foodId) {
-  state.customFoods = state.customFoods.filter((x) => x.id !== foodId);
-  state.favorites = state.favorites.filter((id) => id !== foodId);
-  delete state.cooked[foodId];
-  delete state.blockedUntil[foodId];
-
-  if (lastPick?.id === foodId) {
-    lastPick = null;
-    setInitialMessage();
-  }
-
-  saveState();
-  fillFilterOptions();
-}
-
-function renderCustomFoods() {
-  const box = el("customFoodsList");
-  const foods = state.customFoods;
-
-  if (!foods.length) {
-    box.className = "custom-list muted";
-    box.textContent = "Zatím žádná vlastní jídla.";
-    return;
-  }
-
-  box.className = "custom-list";
-  box.innerHTML = foods.map((food) => `
-    <div class="custom-item">
-      <div>
-        <div class="custom-item-title">${escapeHtml(food.name)}</div>
-        <div class="muted">
-          ${escapeHtml(asArray(food.meal_type).join(", ") || "-")} •
-          ${escapeHtml(food.time_category || "-")} •
-          ${escapeHtml(asArray(food.methods).join(", ") || "-")}
-        </div>
-      </div>
-      <button class="danger" data-delete-custom="${escapeHtml(food.id)}">Smazat</button>
-    </div>
-  `).join("");
-
-  box.querySelectorAll("[data-delete-custom]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const id = btn.getAttribute("data-delete-custom");
-      deleteCustomFood(id);
-    });
-  });
-}
-
 function exportState() {
   const payload = {
     exported_at: new Date().toISOString(),
@@ -615,8 +504,7 @@ function importState(file) {
       state = {
         favorites: Array.isArray(payload.state.favorites) ? payload.state.favorites : [],
         cooked: payload.state.cooked && typeof payload.state.cooked === "object" ? payload.state.cooked : {},
-        blockedUntil: payload.state.blockedUntil && typeof payload.state.blockedUntil === "object" ? payload.state.blockedUntil : {},
-        customFoods: Array.isArray(payload.state.customFoods) ? payload.state.customFoods : []
+        blockedUntil: payload.state.blockedUntil && typeof payload.state.blockedUntil === "object" ? payload.state.blockedUntil : {}
       };
 
       saveState();
@@ -645,7 +533,6 @@ function clearLocalData() {
   updateActionButtons();
   fillFilterOptions();
   refreshDebug();
-  renderCustomFoods();
 }
 
 function refreshDebug() {
@@ -668,8 +555,6 @@ function wireUI() {
   el("btnCooked").addEventListener("click", markCookedToday);
   el("btnSkip").addEventListener("click", blockFor7Days);
 
-  el("btnAddCustom").addEventListener("click", addCustomFood);
-
   el("btnExport").addEventListener("click", exportState);
   el("btnClearLocal").addEventListener("click", clearLocalData);
 
@@ -687,7 +572,6 @@ async function main() {
     updateActionButtons();
     await loadDB();
     fillFilterOptions();
-    renderCustomFoods();
     refreshDebug();
   } catch (err) {
     console.error(err);
