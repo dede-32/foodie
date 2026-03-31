@@ -104,10 +104,10 @@ def process_image(food_id: str) -> bool:
                 out_path = OUT_IMG_DIR / f"{food_id}.webp"
                 cropped_img.save(out_path, "WEBP", quality=80)
                 
-                print(f"  [+] Chytře oříznuto a uloženo: {out_path.name}")
+                print(f"  [+] Chytre oriznuto a ulozeno: {out_path.name}")
                 return True
             except Exception as e:
-                print(f"  [!] Chyba při zpracování obrázku {raw_path.name}: {e}")
+                print(f"  [!] Chyba pri zpracovani obrazku {raw_path.name}: {e}")
     return False
 
 
@@ -185,7 +185,7 @@ def main():
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"\nHotovo! {len(foods)} jídel úspěšně uloženo do {output_path}.")
+    print(f"\nHotovo! {len(foods)} jidel uspesne ulozeno do {output_path}.")
 
 
 if __name__ == "__main__":

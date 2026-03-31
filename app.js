@@ -321,17 +321,23 @@ function setResult(food, note = "") {
   container.classList.remove("muted");
 
   // Ošetření a zobrazení obrázku
-  if (food.img) {
+if (food.img) {
       imgEl.src = food.img;
       imgContainer.style.display = "block";
       
-      // Skrýt kontejner, pokud obrázek fyzicky na disku ještě neexistuje
+      // Pokud obrázek neexistuje (chyba 404), nastavit placeholder
       imgEl.onerror = function() {
-          imgContainer.style.display = "none";
-          console.warn(`Obrázek nenalezen: ${food.img}`);
+          // Zde zadej cestu ke svému placeholderu
+          imgEl.src = "images/placeholder.webp"; 
+          console.log(`Použit placeholder pro: ${food.name}`);
+          
+          // Zamezíme nekonečné smyčce, kdyby chyběl i placeholder
+          imgEl.onerror = null; 
       };
   } else {
-      imgContainer.style.display = "none";
+      // Pokud v JSONu img vůbec není, rovnou dáme placeholder
+      imgEl.src = "images/placeholder.webp";
+      imgContainer.style.display = "block";
   }
 
   const mealType = asArray(food.meal_type);
