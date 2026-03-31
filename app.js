@@ -412,7 +412,7 @@ function pickFood() {
 
   isSpinning = true;
   el("btnPick").disabled = true;
-  el("btnAgain").disabled = true;
+  // Smazáno: el("btnAgain").disabled = true;
 
   const container = el("resultContainer");
   const box = el("result");
@@ -440,7 +440,7 @@ function pickFood() {
       
       isSpinning = false;
       el("btnPick").disabled = false;
-      el("btnAgain").disabled = false;
+      // Smazáno: el("btnAgain").disabled = false;
     }
   }, spinInterval);
 }
