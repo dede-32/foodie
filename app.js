@@ -320,22 +320,19 @@ function setResult(food, note = "") {
 
   container.classList.remove("muted");
 
-  // Ošetření a zobrazení obrázku
-if (food.img) {
+  // --- SPRÁVNÁ LOGIKA PRO OBRÁZEK A PLACEHOLDER ---
+  if (food.img) {
       imgEl.src = food.img;
       imgContainer.style.display = "block";
       
-      // Pokud obrázek neexistuje (chyba 404), nastavit placeholder
+      // Když obrázek neexistuje (chyba 404), dej tam placeholder
       imgEl.onerror = function() {
-          // Zde zadej cestu ke svému placeholderu
-          imgEl.src = "images/placeholder.webp"; 
-          console.log(`Použit placeholder pro: ${food.name}`);
-          
-          // Zamezíme nekonečné smyčce, kdyby chyběl i placeholder
-          imgEl.onerror = null; 
+          imgEl.src = "images/placeholder.webp"; // Ujisti se, že se takto jmenuje!
+          imgContainer.style.display = "block";
+          imgEl.onerror = null; // Zabrání nekonečné smyčce
       };
   } else {
-      // Pokud v JSONu img vůbec není, rovnou dáme placeholder
+      // Pokud jídlo vůbec nemá atribut img
       imgEl.src = "images/placeholder.webp";
       imgContainer.style.display = "block";
   }
@@ -380,7 +377,6 @@ if (food.img) {
     </div>
   `;
 
-  // --- NOVINKA: Změní text hlavního tlačítka ---
   const pickBtn = el("btnPick");
   if (pickBtn) {
       pickBtn.textContent = "Zkus to znovu";

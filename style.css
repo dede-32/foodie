@@ -83,17 +83,6 @@ button:disabled {
   border-color: rgba(255,80,80,.45);
 }
 
-.result {
-  font-size: 17px;
-  line-height: 1.5;
-  padding: 14px;
-  border-radius: 12px;
-  background: rgba(0,0,0,.25);
-  border: 1px solid rgba(255,255,255,.10);
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .result-title {
   font-size: 24px;
   font-weight: 700;
@@ -105,7 +94,7 @@ button:disabled {
   flex-wrap: wrap;
   gap: 8px;
   margin: 10px 0 6px;
-  justify-content: center;
+  justify-content: flex-start; /* Štítky zarovnány doleva */
 }
 
 .badge {
@@ -158,22 +147,32 @@ pre {
 /* --- OBRÁZKY A VÝSLEDEK --- */
 .result-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Vedle sebe (text vlevo, obr vpravo) */
   gap: 1.5rem;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start; /* Zarovnáme nahoru */
+  text-align: left;
   min-height: 200px;
-  justify-content: center;
   width: 100%;
+}
+
+.result {
+  flex: 1; /* Text zabere zbylé volné místo */
+  font-size: 17px;
+  line-height: 1.5;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.10);
+  box-sizing: border-box;
 }
 
 .result-image-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 320px; /* Šířka obrázku, ať nesežere celý prostor */
+  flex-shrink: 0; /* Zabrání zmenšování obrázku pod max-width */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-  margin: 0 auto;
 }
 
 .food-image {
@@ -299,9 +298,25 @@ pre {
   font-style: italic;
 }
 
+/* --- RESPONZIVITA PRO MOBILY --- */
 @media (max-width: 900px) {
   .grid,
   .filters-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .result-container {
+    /* Přirozené řazení pod sebe (nejdřív text, pak obrázek) */
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+  }
+  .result-image-container {
+    max-width: 100%;
+  }
+  .badges {
+    justify-content: center;
   }
 }
