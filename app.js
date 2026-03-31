@@ -424,8 +424,8 @@ function pickFood() {
   imgContainer.style.display = "none"; // Během animace obrázek schováme
 
   let spins = 0;
-  const maxSpins = 15; 
-  const spinInterval = 70;
+  const maxSpins = 10; 
+  const spinInterval = 50;
 
   const spinTimer = setInterval(() => {
     const randomCandidate = candidates[Math.floor(Math.random() * candidates.length)];
